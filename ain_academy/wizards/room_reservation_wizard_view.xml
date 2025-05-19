@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_room_reservation_wizard_form" model="ir.ui.view">
+        <field name="name">room.reservation.wizard.form</field>
+        <field name="model">room.reservation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reserve Room">
+                <group>
+                    <field name="room_id" readonly="1"/>
+                    <field name="session_id"/>
+                </group>
+                <footer>
+                    <button string="Reserve" type="object" name="action_reserve_room" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

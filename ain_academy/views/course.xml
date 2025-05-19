@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Course Form View -->
+    <record id="openacademy_course_view_form" model="ir.ui.view">
+        <field name="name">openacademy.course.view.form</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <group string="Course Overview" col="2">
+                            <field name="name"/>
+                            <field name="description" placeholder="Write a brief description..."/>
+                        </group>
+                        <group string="Instructor Details" col="2">
+                            <field name="difficulty_level"/>
+                            <field name="instructor_id"/>
+                        </group>
+                        <group string="Course Sessions">
+                            <field name="session_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Course Tree View -->
+    <record id="openacademy_course_view_tree" model="ir.ui.view">
+        <field name="name">openacademy.course.view.tree</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree string="Courses">
+                <field name="name"/>
+                <field name="difficulty_level"/>
+                <field name="instructor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Course Window Action -->
+    <record id="openacademy_course_action" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Course Menu Item -->
+    <menuitem id="menu_openacademy_course" name="Courses" action="openacademy_course_action" parent="menu_openacademy_root"/>
+</odoo>

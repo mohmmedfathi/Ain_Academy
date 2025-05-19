@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_room_unreserve_wizard_form" model="ir.ui.view">
+        <field name="name">room.unreserve.wizard.form</field>
+        <field name="model">room.unreserve.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Unreserve Specific Session">
+                <group>
+                    <field name="room_id" readonly="1"/>
+                    <field name="session_id"/>
+                </group>
+                <footer>
+                    <button string="Unreserve" type="object" name="action_unreserve_session" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

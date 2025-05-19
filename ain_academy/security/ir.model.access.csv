@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner,access_partner,model_openacademy_partner,,1,1,1,1
+access_course,access_course,model_openacademy_course,,1,1,1,1
+access_session,access_session,model_openacademy_session,,1,1,1,1
+access_room,access_room,model_openacademy_room,,1,1,1,1
+access_room_reservation_wizard,access_room_reservation_wizard,model_room_reservation_wizard,,1,1,1,0
+access_room_unreserve_wizard,access_room_unreserve_wizard,model_room_unreserve_wizard,,1,1,1,0
