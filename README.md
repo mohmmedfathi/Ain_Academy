@@ -57,6 +57,18 @@ AinAcademy is an ERP module for managing training operations, built for Odoo 17.
 - The display name of a session is dynamically computed as: Session Name - Course Name.
 - The room's available date updates automatically based on its latest session.
 
+
+### Room Un-Rresrvation
+
+#### Case 1 session
+
+![Image](https://github.com/user-attachments/assets/2f77f092-c98e-4fa4-a057-92e009df21f7)
+
+#### Case All Sessions
+
+![Image](https://github.com/user-attachments/assets/1a0cb68e-2cef-430f-ad97-4298f09befc3)
+
+
 ### Entity Flowcharts
 
 1. **Partner**
