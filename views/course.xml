@@ -16,7 +16,7 @@
                             <field name="instructor_id"/>
                         </group>
                         <group string="Course Sessions">
-                            <field name="session_ids"/>
+                            <field name="session_ids" readonly="1"/>
                         </group>
                     </group>
                 </sheet>

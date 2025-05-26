@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields
 from odoo.exceptions import ValidationError
 
 class RoomReservationWizard(models.TransientModel):
@@ -18,4 +18,5 @@ class RoomReservationWizard(models.TransientModel):
 
         self.session_id.room_id = self.room_id.id
         self.room_id.state = 'reserved'
+        
         return {'type': 'ir.actions.act_window_close'}

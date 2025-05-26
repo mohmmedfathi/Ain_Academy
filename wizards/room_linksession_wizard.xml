@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_room_link_sessions_wizard_form" model="ir.ui.view">
+    <field name="name">room.link.sessions.wizard.form</field>
+    <field name="model">room.link.sessions.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Link Sessions">
+            <group>
+                <field name="room_id"/>
+                <field name="session_ids" widget="many2many_tags"/>
+            </group>
+            <footer>
+                <button name="action_link_sessions" type="object" string="Link" class="btn-primary"/>
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+    </record>
+
+
+</odoo>

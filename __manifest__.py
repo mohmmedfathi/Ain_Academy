@@ -25,6 +25,7 @@ Long description of module's purpose
         'security/ir.model.access.csv',
         'wizards/room_reservation_wizard_view.xml',
         'wizards/room_unreservation_wizard_view.xml',
+        'wizards/room_linksession_wizard.xml',
         'views/ain_academy_parent_menu.xml',
         'views/partner.xml',
         'views/course.xml',
@@ -33,8 +34,14 @@ Long description of module's purpose
         
     ],
     # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    # 'demo': [
+    #     'demo/demo.xml',
+    # ],
+
+    'assets': {
+        'web.assets_backend': [
+            'ain_academy/static/src/css/main.css',
+        ],
+    },
 }
 

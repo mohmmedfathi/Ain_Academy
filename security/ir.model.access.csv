@@ -5,3 +5,4 @@ access_session,access_session,model_openacademy_session,,1,1,1,1
 access_room,access_room,model_openacademy_room,,1,1,1,1
 access_room_reservation_wizard,access_room_reservation_wizard,model_room_reservation_wizard,,1,1,1,0
 access_room_unreserve_wizard,access_room_unreserve_wizard,model_room_unreserve_wizard,,1,1,1,0
+access_room_link_sessions_wizard,Access_to_Room_Link_Wizard,model_room_link_sessions_wizard,,1,1,1,1

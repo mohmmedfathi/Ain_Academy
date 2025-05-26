@@ -29,10 +29,17 @@
                     <group>
                         <field name="name"/>
                         <field name="price"/>
+                        <field name="currency_id"/>
                         <field name="state"/>
                         <field name="available_date"/>
                         <field name="session_ids"/>
-                        <field name="instructor_ids"/>
+                        
+                        <button name="action_open_link_sessions_wizard"
+                        string="Link Sessions"
+                        type="object"
+                        class="btn-secondary"/>
+
+                        
                     </group>
                 </sheet>
             </form>

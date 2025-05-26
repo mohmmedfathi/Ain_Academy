@@ -25,6 +25,17 @@
             </kanban>
         </field>
     </record>
+    
+    <record id="confirm_session_action_server" model="ir.actions.server">
+        <field name="name">confirm session server action</field>
+        <field name="model_id" ref="model_openacademy_session"/>
+        <field name="binding_model_id" ref="model_openacademy_session"/> <!-- connect server action to model & put action to Actions menu-->
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_confirm()
+        </field>
+    </record>
+
 
     <!-- Session Calendar View -->
     <record id="openacademy_session_calendar_view" model="ir.ui.view">
@@ -60,7 +71,7 @@
                         <field name="name" string="Session Title"/>
                         <field name="course_id" string="Linked Course"/>
                         <field name="state" string="Current State"/>
-                        <field name="display_name" string="Display Title" readonly="1"/>
+                        <field name="display_name" string="Display Title" />
                     </group>
 
                     <group string="Scheduling and Participants" col="2">
@@ -69,7 +80,7 @@
                         <field name="end_date" string="End Date" readonly="1"/>
                         <field name="is_active" string="is Active?" readonly="1"/>
                         <field name="instructor_id" string="Instructor"/>
-                        <field name="room_id" string="Assigned Room"/>
+                        <field name="room_id" string="Assigned Room" />
                         <field name="attended_student_ids" string="Attending Students"/>
                     </group>
                 </sheet>
@@ -82,7 +93,7 @@
         <field name="name">openacademy.session.view.tree</field>
         <field name="model">openacademy.session</field>
         <field name="arch" type="xml">
-            <tree string="Sessions">
+            <tree string="Sessions" decoration-danger="(is_active)">
                 <field name="name"/>
                 <field name="state"/>
                 <field name="course_id"/>
@@ -98,7 +109,7 @@
     <record id="openacademy_session_action" model="ir.actions.act_window">
         <field name="name">Sessions</field>
         <field name="res_model">openacademy.session</field>
-        <field name="view_mode">calendar,tree,kanban,form</field>
+        <field name="view_mode">tree,calendar,kanban,form</field>
     </record>
 
     <!-- Session Menu Item -->
