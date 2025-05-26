@@ -14,9 +14,6 @@
 <p align="center"><strong>Made with ❤️ in <a href="https://www.shebak.com" target="_blank">Shebak</a></strong></p>
 
 
-[![Watch the video](https://github.com/user-attachments/assets/bae0d29c-e86e-4067-b1db-e7c76c951db9)](https://github.com/user-attachments/assets/bae0d29c-e86e-4067-b1db-e7c76c951db9)
-
-
 
 ## About The Project
 AinAcademy is an ERP module for managing training operations, built for Odoo 17. It includes instructor-led sessions, room scheduling, session attendance, and conflict validation.
