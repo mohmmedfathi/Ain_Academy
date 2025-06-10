@@ -18,34 +18,20 @@
                             <div><field name="course_id"/></div>
                             <div><field name="instructor_id"/></div>
                             <div><field name="start_date"/> - <field name="end_date"/></div>
-                            <div>State: <field name="state"/></div>
+                            <div><field name="state"/></div>
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record>
-    
-    <record id="confirm_session_action_server" model="ir.actions.server">
-        <field name="name">confirm session server action</field>
-        <field name="model_id" ref="model_openacademy_session"/>
-        <field name="binding_model_id" ref="model_openacademy_session"/> <!-- connect server action to model & put action to Actions menu-->
-        <field name="state">code</field>
-        <field name="code">
-            action = records.action_confirm()
-        </field>
-    </record>
-
 
     <!-- Session Calendar View -->
     <record id="openacademy_session_calendar_view" model="ir.ui.view">
         <field name="name">openacademy.session.calendar</field>
         <field name="model">openacademy.session</field>
         <field name="arch" type="xml">
-            <calendar string="Room Reservations Calendar"
-                    date_start="start_date"
-                    date_stop="end_date"
-                    color="room_id">
+            <calendar date_start="start_date" date_stop="end_date" color="room_id">
                 <field name="name"/>
                 <field name="room_id"/>
                 <field name="instructor_id"/>
@@ -58,31 +44,40 @@
         <field name="name">openacademy.session.view.form</field>
         <field name="model">openacademy.session</field>
         <field name="arch" type="xml">
-            <form string="Session">
+            <form>
                 <header>
-                    <button name="action_confirm"
+                <button name="action_confirm"
                             type="object"
-                            string="Confirm"
-                            invisible="state != 'draft'"
-                            class="btn-primary"/>
+                            class="btn-primary"
+                            invisible="state != 'draft'" string="confirm"/>
+
+                <field name="state" widget="statusbar"/>
+                    
+                    
                 </header>
                 <sheet>
-                    <group string="General Information" col="2">
-                        <field name="name" string="Session Title"/>
-                        <field name="course_id" string="Linked Course"/>
-                        <field name="state" string="Current State"/>
-                        <field name="display_name" string="Display Title" />
+                <group>
+                    <group col="2">
+                        <field name="name"/>
+                        <field name="course_id"/>
+                        <field name="DisplayName"/>
                     </group>
 
-                    <group string="Scheduling and Participants" col="2">
-                        <field name="start_date" string="Start Date"/>
-                        <field name="duration" string="Duration (Hours)"/>
-                        <field name="end_date" string="End Date" readonly="1"/>
-                        <field name="is_active" string="is Active?" readonly="1"/>
-                        <field name="instructor_id" string="Instructor"/>
-                        <field name="room_id" string="Assigned Room" />
-                        <field name="attended_student_ids" string="Attending Students"/>
+                    <group col="2">
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="end_date" readonly="1"/>
+                        <field name="is_active" readonly="1"/>
+                        <field name="instructor_id"/>
+                        <field name="room_id" readonly="1"/>
+                        
                     </group>
+
+                    <group>
+                            <field name="attended_student_ids"/>
+                    </group>
+                </group>
+                    
                 </sheet>
             </form>
         </field>
@@ -93,7 +88,7 @@
         <field name="name">openacademy.session.view.tree</field>
         <field name="model">openacademy.session</field>
         <field name="arch" type="xml">
-            <tree string="Sessions" decoration-danger="(is_active)">
+            <tree decoration-success="(is_active)">
                 <field name="name"/>
                 <field name="state"/>
                 <field name="course_id"/>

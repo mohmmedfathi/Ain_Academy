@@ -22,15 +22,15 @@ Long description of module's purpose
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'wizards/room_reservation_wizard_view.xml',
-        'wizards/room_unreservation_wizard_view.xml',
-        'wizards/room_linksession_wizard.xml',
         'views/ain_academy_parent_menu.xml',
         'views/partner.xml',
         'views/course.xml',
         'views/session.xml',
         'views/room.xml',
+        'views/session_cron.xml'
         
     ],
     # only loaded in demonstration mode

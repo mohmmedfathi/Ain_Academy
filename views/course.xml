@@ -9,7 +9,7 @@
                     <group>
                         <group string="Course Overview" col="2">
                             <field name="name"/>
-                            <field name="description" placeholder="Write a brief description..."/>
+                            <field name="description" />
                         </group>
                         <group string="Instructor Details" col="2">
                             <field name="difficulty_level"/>

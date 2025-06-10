@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="cron_update_session_state" model="ir.cron">
+             <field name="name">Mark Old Sessions as Done</field>
+             <field name="model_id" ref="model_openacademy_session"/>
+             <field name="active" eval="True"/>
+              <field name="interval_type">minutes</field>
+              <field name="interval_number">1</field>
+              <field name="numbercall">-1</field>
+              <field name="state">code</field>
+              <field name="code">model._old_sessions_done()</field>
+        </record>
+        
+    
+    </data>
+    
+
+</odoo>

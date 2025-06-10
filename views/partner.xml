@@ -10,12 +10,13 @@
                         <group string="Personal Details" col="2">
                             <field name="name" string="Partner Name"/>
                             <field name="age" string="Age"/>
-                            <field name="image" widget="image" style="width: 500px; height: auto; max-width: 100%;"/>
+                            <field name="image" widget="image"/>
                         </group>
                         <group string="Role and Participation" col="2">
-                            <field name="is_instructor" string="Is Instructor?" />
-                            <field name="attended_session_ids" string="Attended Sessions" invisible="is_instructor == True" readonly="1"/>
-                            <field name="sessions_taught" string="sessions_taught" invisible="is_instructor == False" readonly="1" domain="[('instructor_id', '=', uid)]"/>
+                            <field name="is_instructor" string="Is Instructor?"/>
+                            <field name="attended_session_ids" string="Attended Sessions" invisible="is_instructor == True" readonly="1" />
+
+                            <field name="instructor_id" string = "taught" invisible="is_instructor == False" readonly="1"/>
                         </group>
                     </group>
                 </sheet>
@@ -29,11 +30,10 @@
         <field name="model">openacademy.partner</field>
         <field name="arch" type="xml">
             <tree string="Partners">
-                <field name="name" class="customcss"/>
-                <field name="image" widget="image" class="customcss"/>
-                <field name="age" class="customcss"/>
-                <field name="is_instructor" class="customcss"/>
-                <field name="attended_session_ids" class="customcss"/>
+                <field name="name"/>
+                <field name="image" widget="image"/>
+                <field name="age" />
+                <field name="is_instructor"/>
             </tree>
         </field>
     </record>
@@ -44,11 +44,11 @@
         <field name="model">openacademy.partner</field>
         <field name="arch" type="xml">
             <kanban default_group_by="is_instructor">
-                <field name="name"/>
+                <!-- <field name="name"/> -->
                 <field name="image"/>
-                <field name="age"/>
+                <!-- <field name="age"/> -->
                 <field name="is_instructor"/>
-                <field name="image"/>
+                <!-- <field name="image"/> -->
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">

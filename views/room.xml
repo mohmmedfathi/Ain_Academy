@@ -6,40 +6,31 @@
         <field name="arch" type="xml">
             <form string="Room">
                 <header>
-                    <button name="action_reserve"
+                        <button name="action_reserve"
+                            type="object"
                             string="Reserve"
-                            type="object"
                             class="btn-primary"
-                            invisible="state == 'reserved'"/>
+                            invisible="state == 'reserved'" />
 
-                    <button name="action_unreserve_specific_session"
-                            string="Unreserve Specific Session"
+                    <button name="action_unreserve_session"
                             type="object"
-                            class="btn-secondary"
-                            invisible="state == 'available'"/>
+                            string="Unreserve"
+                            class="btn-primary"
+                            invisible="state == 'available'" />
 
-                    <button name="action_unreserve_all_sessions"
-                            string="Unreserve All"
-                            type="object"
-                            class="btn-secondary"
-                            invisible="state == 'available'"/>
+                    <field name="state" widget="statusbar" />
                 </header>
 
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="price"/>
-                        <field name="currency_id"/>
-                        <field name="state"/>
-                        <field name="available_date"/>
-                        <field name="session_ids"/>
-                        
-                        <button name="action_open_link_sessions_wizard"
-                        string="Link Sessions"
-                        type="object"
-                        class="btn-secondary"/>
+                        <field name="name" readonly="state=='reserved'"/>
+                        <field name="price" readonly="state=='reserved'"/>
+                        <field name="currency_id" readonly="state=='reserved'"/>
+                        <field name="available_date" readonly="1"/>
+                    </group>
 
-                        
+                    <group string="Instructor in the Room" col="2">
+                        <field name="instructor_id" widget="badge" />
                     </group>
                 </sheet>
             </form>
@@ -52,12 +43,12 @@
         <field name="model">openacademy.room</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
-                <field name="price"/>
-                <field name="state"/>
-                <field name="available_date"/>
-                <field name="session_ids"/>
-                <field name="instructor_ids"/>
+                <field name="name" />
+                <field name="price" />
+                <field name="state" />
+                <field name="available_date" />
+                <field name="session_id" />
+                <field name="instructor_id" />
             </tree>
         </field>
     </record>
@@ -70,5 +61,8 @@
     </record>
 
     <!-- Room Menu Item -->
-    <menuitem id="menu_openacademy_room" name="Rooms" parent="menu_openacademy_root" action="action_openacademy_room"/>
+    <menuitem id="menu_openacademy_room"
+              name="Rooms"
+              parent="menu_openacademy_root"
+              action="action_openacademy_room" />
 </odoo>

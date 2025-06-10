@@ -20,45 +20,41 @@ class OpenAcademyRoom(models.Model):
         string='State',
         default='available'
     )
-    available_date = fields.Datetime(default=fields.Datetime.now)
 
-    # Room relations
-    session_ids = fields.One2many(
+    available_date = fields.Datetime(
+        compute='_compute_available_date',
+    )
+
+    # Relations
+    session_id = fields.One2many(
         comodel_name='openacademy.session',
         inverse_name='room_id',
         string='Sessions'
     )
 
-    instructor_ids = fields.Many2many(
+    instructor_id = fields.Many2one(
         comodel_name='openacademy.partner',
-        relation='openacademy_room_instructor_rel',
-        column1='room_id',
-        column2='instructor_id',
-        compute='_compute_room_schedule',
-        string='Instructors'
+        compute='_compute_instructor_id',
+        string='Instructor'
     )
 
-    # Compute methods
-    @api.depends('session_ids.start_date', 'session_ids.end_date')
-    def _compute_room_schedule(self):
-        """
-        Updates instructor list and available date based on linked sessions.
-        """
+    # Compute Methods
+    @api.depends('session_id.end_date')
+    def _compute_available_date(self):
+
         for record in self:
-            sessions = record.session_ids
-            sorted_sessions = sessions.sorted(lambda s: s.end_date)
+            session = record.session_id
+            record.available_date = session.end_date if session else fields.Datetime.now()
 
-            record.instructor_ids = record._get_instructors_from_sessions(sorted_sessions)
-            record.available_date = self._get_last_available_date(sorted_sessions)
 
-    @staticmethod
-    def _get_last_available_date(sorted_sessions):
-        if sorted_sessions:
-            return sorted_sessions[-1].end_date
-        return fields.Datetime.now()
-
-    def _get_instructors_from_sessions(self, sorted_sessions):
-        return sorted_sessions.mapped('instructor_id')
+    @api.depends('session_id.instructor_id')
+    def _compute_instructor_id(self):
+        for record in self:
+            session = record.session_id
+            if session and session.instructor_id:
+                record.instructor_id = session.instructor_id
+            else:
+                record.instructor_id = False
 
     # Actions
     def action_reserve(self):
@@ -71,28 +67,10 @@ class OpenAcademyRoom(models.Model):
             'context': {'default_room_id': self.id},
         }
 
-    def action_unreserve_specific_session(self):
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Unreserve Specific Session',
-            'res_model': 'room.unreserve.wizard',
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {'default_room_id': self.id},
-        }
-
-    def action_unreserve_all_sessions(self):
-        for record in self:
-            record.session_ids.write({'room_id': False})
-            record.state = 'available'
-
-    def action_open_link_sessions_wizard(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Link Existing Sessions',
-            'res_model': 'room.link.sessions.wizard',
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {'default_room_id': self.id},
-        }
+    
+    def action_unreserve_session(self):
+        
+        
+        self.session_id = False
+        self.state = 'available'
+        
