@@ -11,8 +11,6 @@
   </p>
 </div>
 
-<p align="center"><strong>Made with ❤️ in <a href="https://www.shebak.com" target="_blank">Shebak</a></strong></p>
-
 
 
 ## About The Project
